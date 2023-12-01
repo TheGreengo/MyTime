@@ -1,6 +1,8 @@
 #ifndef MYTIME
 #define MYTIME
 
+// test date: 1162494284 (should be 4-20-69 4:20 tz:12)
+
 class MyTime {
 private:
     unsigned int time;

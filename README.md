@@ -27,3 +27,9 @@ Let's think about this
 total: 32 bits 
 
 # Oh yeah, it's all coming together
+
+example: 16:20 April 20, 1969 time zone 12 (that doesn't mean anything yet)
+69 - 4 - 20 - 16 - 1 - 1 - 12
+01000101 - 0100 - 10100 - 10000 - 01 - 01 - 001100
+01000101010010100100000101001100
+1162494284
