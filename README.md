@@ -22,12 +22,12 @@ Let's think about this
 - 31 days = 5 bits
 - 24 hours = 5 bits
 - 4 quarters = 2 bits
-- 3 femtoids = 2 bits
+- 3 fiver = 2 bits
 - 37 timezones = 6 bits
 total: 32 bits 
 
 # Oh yeah, it's all coming together
-
+4-20-69 4:20 tz:12
 example: 16:20 April 20, 1969 time zone 12 (that doesn't mean anything yet)
 69 - 4 - 20 - 16 - 1 - 1 - 12
 01000101 - 0100 - 10100 - 10000 - 01 - 01 - 001100
