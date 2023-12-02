@@ -9,6 +9,9 @@ private:
 public:
     MyTime(unsigned int t): time(t) {}
 
+    unsigned int getRaw() {
+        return time;
+    }
     // this needs reworking, there's no way it actually does stuff
     int getDay() {
         unsigned int result = this->time;
