@@ -1,4 +1,4 @@
-# MyTime
+MyTime
 I want my own way to deal with datetimes that doesn't suck
 
 Goals: 
@@ -11,9 +11,7 @@ Goals:
 - whatever else I want
 
  0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-
 [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]
-
 {         year         }{   month  }{     day     }{    hours    }{ q  }{ fm }{    timezone    }
 
 Let's think about this
@@ -26,7 +24,6 @@ Let's think about this
 - 37 timezones = 6 bits
 total: 32 bits 
 
-# Oh yeah, it's all coming together
 4-20-69 4:20 tz:12
 example: 16:20 April 20, 1969 time zone 12 (that doesn't mean anything yet)
 69 - 4 - 20 - 16 - 1 - 1 - 12
