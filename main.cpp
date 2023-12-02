@@ -12,9 +12,7 @@ int main(int argc, char ** argv) {
     std::cout << test << std::endl;
     test.setHour(21);
     std::cout << test << std::endl;
-    test.setQuarter(3);
-    std::cout << test << std::endl;
-    test.setFiver(2);
+    test.setMinutes(30);
     std::cout << test << std::endl;
     return 0;
 }

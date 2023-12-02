@@ -113,12 +113,88 @@ public:
         return (this->getQuarter()*15) + (this->getFiver() * 5);
     }
 
-    int getTZ() {
-        // TODO: Fix this ---------------------------------------------------------------------  
-        return this->time & 0x0000003F;
+    std::string getTZ() {
+        switch(this->time & 0x0000003F) {
+            case(0):
+                return "UTC-12:00";
+            case(1):
+                return "UTC-11:00";
+            case(2):
+                return "UTC-10:00";
+            case(3):
+                return "UTC-09:30";
+            case(4):
+                return "UTC-09:00";
+            case(5):
+                return "UTC-08:00";
+            case(6):
+                return "UTC-07:00";
+            case(7):
+                return "UTC-06:00";
+            case(8):
+                return "UTC-05:00";
+            case(9):
+                return "UTC-04:00";
+            case(10):
+                return "UTC-03:30";
+            case(11):
+                return "UTC-03:00";
+            case(12):
+                return "UTC-02:00";
+            case(13):
+                return "UTC-01:00";
+            case(14):
+                return "UTC-00:00";
+            case(15):
+                return "UTC+01:00";
+            case(16):
+                return "UTC+02:00";
+            case(17):
+                return "UTC+03:00";
+            case(18):
+                return "UTC+03:30";
+            case(19):
+                return "UTC+04:00";
+            case(20):
+                return "UTC+04:30";
+            case(21):
+                return "UTC+05:00";
+            case(22):
+                return "UTC+05:30";
+            case(23):
+                return "UTC+05:45";
+            case(24):
+                return "UTC+06:00";
+            case(25):
+                return "UTC+06:30";
+            case(26):
+                return "UTC+07:00";
+            case(27):
+                return "UTC+08:00";
+            case(28):
+                return "UTC+08:45";
+            case(29):
+                return "UTC+09:00";
+            case(30):
+                return "UTC+09:30";
+            case(31):
+                return "UTC+10:00";
+            case(32):
+                return "UTC+10:30";
+            case(33):
+                return "UTC+11:00";
+            case(34):
+                return "UTC+12:00";
+            case(35):
+                return "UTC+12:45";
+            case(36):
+                return "UTC+13:00";
+            case(37):
+                return "UTC+14:00";
+            default:
+                return "Error: Invalid Timezone";
+        }
     }
-
-// TODO: Add validity checks to these guys ---------------------------------------------------
 
     void setYear(int year) {
         this->time &= 0x00FFFFFF;
@@ -151,12 +227,12 @@ public:
     }
 
     void setMinutes(int minutes) {
-        // TODO: Make this work  --------------------------------------------------------------   
+        this->time &= 0xFFFFFC3F;
+        this->time += ((minutes / 15) << 8) + (((minutes % 15) / 5) << 6);
     }
 
-    void setTZ() {
+    void setTZ(std::string tz) {
         this->time &= 0xFFFFFFC0;
-        // TODO: Make this work  --------------------------------------------------------------   
     }
 
     std::string toString() {
@@ -166,7 +242,7 @@ public:
         std::to_string(this->getHour()) + ":" + \
         std::to_string(this->getMinutes()) + " " + \
         (this->getMilHour() > 12 ? "PM" : "AM") + " " + \
-        std::to_string(this->getTZ());
+        this->getTZ();
     }
 
     std::string getMilitary() {
@@ -175,7 +251,7 @@ public:
         std::to_string(this->getYear()) + " " + \
         std::to_string(this->getMilHour()) + ":" + \
         std::to_string(this->getMinutes()) + " " + \
-        std::to_string(this->getTZ());
+        this->getTZ();
     }
 
     friend std::ostream & operator << (std::ostream& os, MyTime& f) {
