@@ -118,35 +118,44 @@ public:
         return this->time & 0x0000003F;
     }
 
-    void setYear() {
-        // TODO: Make this work  --------------------------------------------------------------
+// TODO: Add validity checks to these guys ---------------------------------------------------
+
+    void setYear(int year) {
+        this->time &= 0x00FFFFFF;
+        this->time += (year << 24);
     }
 
-    void setMonth() {
-        // TODO: Make this work  --------------------------------------------------------------
+    void setMonth(int month) {
+        this->time &= 0xFF0FFFFF;
+        this->time += (month << 20);
     }
 
-    void setDay() {
-        // TODO: Make this work  --------------------------------------------------------------   
+    void setDay(int day) {
+        this->time &= 0xFFF07FFF;
+        this->time += (day << 15);  
     }
 
-    void setHour() {
-        // TODO: Make this work  --------------------------------------------------------------   
+    void setHour(int hour) {
+        this->time &= 0xFFFF83FF;
+        this->time += (hour << 10); 
     }
 
-    void setQuarter() {
-        // TODO: Make this work  --------------------------------------------------------------   
+    void setQuarter(int quarter) {
+        this->time &= 0xFFFFFCFF;
+        this->time += (quarter << 8);  
     }
 
-    void setFiver() {
-        // TODO: Make this work  --------------------------------------------------------------   
+    void setFiver(int fiver) {
+        this->time &= 0xFFFFFF3F;
+        this->time += (fiver << 6);
     }
 
-    void setMinutes() {
+    void setMinutes(int minutes) {
         // TODO: Make this work  --------------------------------------------------------------   
     }
 
     void setTZ() {
+        this->time &= 0xFFFFFFC0;
         // TODO: Make this work  --------------------------------------------------------------   
     }
 
@@ -161,7 +170,12 @@ public:
     }
 
     std::string getMilitary() {
-        return "lolz";
+        return std::to_string(this->getMonth()) + "-" + \
+        std::to_string(this->getDay()) +  "-" + \
+        std::to_string(this->getYear()) + " " + \
+        std::to_string(this->getMilHour()) + ":" + \
+        std::to_string(this->getMinutes()) + " " + \
+        std::to_string(this->getTZ());
     }
 
     friend std::ostream & operator << (std::ostream& os, MyTime& f) {
