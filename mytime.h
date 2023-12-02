@@ -42,7 +42,19 @@ public:
 
     // mm-dd-yy hh:mm tz type constructor 
     MyTime(int month, int day, int year, int hour, int minute, std::string tz) {
-        // TODO: Make this work ---------------------------------------------------------------------
+        this->time = year;
+        this->time <<= 4;
+        this->time += month;
+        this->time <<= 5;
+        this->time += day;
+        this->time <<= 5;
+        this->time += hour;
+        this->time <<= 2;
+        this->time += (minute / 15);
+        this->time <<= 2;
+        this->time += ((minute % 15)  / 5);
+        this->time <<= 6;
+        this->setTZ(tz);
     }
 
     unsigned int getRaw() {
@@ -232,7 +244,128 @@ public:
     }
 
     void setTZ(std::string tz) {
+        int val;
+        int id = (tz.at(3) == '-' ? 0 : 10000) + 2*int(tz.at(4)) + 3*int(tz.at(5) + 5*int(tz.at(7)));
+        switch(id) {
+            case(968):
+                val = 0;
+                break;
+            case(965):
+                val = 1;
+                break;
+            case(962):
+                val = 2;
+                break;
+            case(1032):
+                val = 3;
+                break;
+            case(987):
+                val = 4;
+                break;
+            case(984):
+                val = 5;
+                break;
+            case(981):
+                val = 6;
+                break;
+            case(978):
+                val = 7;
+                break;
+            case(975):
+                val = 8;
+                break;
+            case(972):
+                val = 9;
+                break;
+            case(1014):
+                val = 10;
+                break;
+            case(969):
+                val = 11;
+                break;
+            case(966):
+                val = 12;
+                break;
+            case(963):
+                val = 13;
+                break;
+            case(960):
+                val = 14;
+                break;
+            case(10963):
+                val = 15;
+                break;
+            case(10966):
+                val = 16;
+                break;
+            case(10969):
+                val = 17;
+                break;
+            case(11014):
+                val = 18;
+                break;
+            case(10972):
+                val = 19;
+                break;
+            case(11017):
+                val = 20;
+                break;
+            case(10975):
+                val = 21;
+                break;
+            case(11020):
+                val = 22;
+                break;
+            case(11035):
+                val = 23;
+                break;
+            case(10978):
+                val = 24;
+                break;
+            case(11023):
+                val = 25;
+                break;
+            case(10981):
+                val = 26;
+                break;
+            case(10984):
+                val = 27;
+                break;
+            case(11044):
+                val = 28;
+                break;
+            case(10987):
+                val = 29;
+                break;
+            case(11032):
+                val = 30;
+                break;
+            case(10962):
+                val = 31;
+                break;
+            case(11007):
+                val = 32;
+                break;
+            case(10965):
+                val = 33;
+                break;
+            case(10968):
+                val = 34;
+                break;
+            case(11028):
+                val = 35;
+                break;
+            case(10971):
+                val = 36;
+                break;
+            case(10974):
+                val = 37;
+                break;
+            default:
+                val = 62;
+        }
         this->time &= 0xFFFFFFC0;
+        this->time += val;
     }
 
     std::string toString() {
