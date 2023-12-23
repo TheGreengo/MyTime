@@ -1,5 +1,5 @@
 MyTime
-I want my own way to deal with datetimes that doesn't suck
+I want my own way to deal with datetimes that sucks
 
 Goals: 
 - records year, month, day, hour, quarter, timezone
